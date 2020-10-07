@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GPIO Test</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+</head>
+<body>
+	<h2>Control GPIO 4</h2>
+	<button type="button" onclick="ledOn()" style="background-color: green;">ON</button>
+	<button type="button" onclick="ledOff()" style="background-color: red;">OFF</button>
+	<script>
+	var socket = io.connect();
+	function ledOn() {
+		socket.emit("state", 1);
+	}
+	function ledOff() {
+		socket.emit("state", 0);
+	}
+	</script>
+</body>
+</html>
