@@ -1,23 +1,10 @@
 const result = require('dotenv').config();
 const util = require('util');
 const log = require('./services/log');
+const eventsDictionary = require('./services/events/eventsDictionary');
 
-/*
-var fs = require('fs'); //require filesystem to read html files
-var http = require('http').createServer(function handler(req, res) { //create server
-  fs.readFile(__dirname + '/index.html', function (err, data) { //read html file
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading socket.io.html');
-    }
+const eventNames = eventsDictionary().getNames()
+const appRoute = (process.env.APP_INTERFACE === 'web') ? './services/web' : './services/iot';
+const app = require(appRoute)({log: log});
 
-    res.writeHead(200);
-    res.end(data);
-  });
-});
-
-// var io = require('socket.io')(http) //require socket.io module and pass the http object
-
-http.listen(8080); //listen to port 8080
-
-*/
+app.init();

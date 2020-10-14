@@ -4,7 +4,12 @@ var LEDPin = new Gpio(4, 'out'); //declare GPIO4 an output
 
 const gpio = function (io){
 
-    io.sockets.on('connection', function (socket) {// WebSocket Connection
+    const init = function(){
+      this.setEvents();
+    }
+    
+    function setEvents(){
+      io.sockets.on('connection', function (socket) {// WebSocket Connection
         var buttonState = 0; //variable to store button state
       
         socket.on('state', function (data) { //get button state from client
@@ -14,6 +19,11 @@ const gpio = function (io){
           }
         });
       });
+    }
+
+    return {
+      init
+    }
 }
 
 module.exports = gpio;
