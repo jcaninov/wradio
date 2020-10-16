@@ -27,10 +27,10 @@ const webUi = (log, events) => {
       var io = socketio(server);
 
       io.on('connect', (socket) => {              
-        socket.on('state', function (data) { //get  state event from client
+        socket.on('state', function (data) { 
           debugger;
         });
-        socket.on('get-country-codes', function (data) { //get  state event from client
+        socket.on('get-country-codes', function (data) {
           events.service.emit(e.input.location.countryCode) 
         });        
       });      
