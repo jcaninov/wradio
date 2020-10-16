@@ -5,6 +5,7 @@
         },
         location: {
             country: '',
+            countryCode: '',
             state: '',
             province: '',
             city: ''
@@ -19,7 +20,7 @@
     
     const mainEvents = {    
         input: JSON.parse(resource),
-        diplay: JSON.parse(resource),
+        display: JSON.parse(resource),
         playback: {
             play: '',
             pause: '',

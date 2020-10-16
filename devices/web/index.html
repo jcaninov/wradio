@@ -8,6 +8,9 @@
 	<h2>Control GPIO 4</h2>
 	<button type="button" onclick="ledOn()" style="background-color: green;">ON</button>
 	<button type="button" onclick="ledOff()" style="background-color: red;">OFF</button>
+	<p></p>
+	<button type="button" onclick="getCountryCodes()" style="background-color: red;">getCountryCodes</button>
+	
 	<script>
 	var socket = io.connect();
 	function ledOn() {
@@ -16,6 +19,17 @@
 	function ledOff() {
 		socket.emit("state", 0);
 	}
+	function getCountryCodes(){
+		socket.emit("get-country-codes");
+	}
+
+	// io.sockets.on('connection', (socket) => {// WebSocket Connection
+		socket.on('country-codes', function (data) { 
+          debugger;
+		});		
+	// });
+
+		
 	</script>
 </body>
 </html>
